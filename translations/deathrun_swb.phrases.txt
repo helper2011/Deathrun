@@ -1,0 +1,32 @@
+"Phrases"
+{
+	"Tag"
+	{
+		"ru"	"{C}FF7373[Бег на выживание]{C}5CCCCC"
+		"en"	"{C}FF7373[DeathRun]{C}5CCCCC"
+	}
+	"Auto Respawn 1: Left"
+	{
+		"#format"	"{1:i}"
+		"ru"		"Авто-Воскрешение: закончится через {1} сек"
+		"en"		"Auto-Respawn: ended in {1} sec"
+	}
+	"Auto Respawn 2: Left"
+	{
+		"#format"	"{1:i}"
+		"ru"		"Авто-Воскрешение: начнется через {1} сек"
+		"en"		"Auto-Respawn: started in {1} sec"
+	}
+	"Auto Respawn Disabled"
+	{
+		"ru"		"Авто-Воскрешение: отключен"
+		"en"		"Auto-Respawn: disabled"
+	}
+	"New terrorist chosed"
+	{
+		"#format"	"{1:N}"
+		"ru"		"Новым террористом стал {C}C9F76F{1}"
+		"en"		"New terrorist is {C}C9F76F{1}"
+	}
+
+}
