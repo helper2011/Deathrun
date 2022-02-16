@@ -3,7 +3,7 @@
 #include <sdktools>
 
 #undef REQUIRE_PLUGIN
-#include <sourcebanspp>
+#tryinclude <sourcebanspp>
 #define REQUIRE_PLUGIN
 
 StringMap BansMap;
