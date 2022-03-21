@@ -9,7 +9,7 @@
 StringMap BansMap;
 
 Handle TimerRespawn;
-ConVar cvarBanType, cvarScoutEnable, cvarRespawnMode, cvarRespawnCD, cvarDisconnectBan;
+ConVar cvarBanType, cvarScoutEnable, cvarRespawnMode, cvarRespawnCD, cvarDisconnectBan, cvarScoutDropRemove;
 
 int RespawnMode;
 bool Sourcebans, RoundIsEnd;
@@ -41,6 +41,7 @@ public void OnPluginStart()
 	cvarRespawnMode = CreateConVar("dr_respawn", "2");
 	cvarRespawnCD = CreateConVar("dr_respawn_cd", "20");
 	cvarScoutEnable = CreateConVar("dr_scout", "1");
+	cvarScoutDropRemove = CreateConVar("dr_scout_drop_remove", "1");
 	AutoExecConfig(true, "deathrun_swb");
 	RegConsoleCmd("sm_scout", Command_Scout);
 	AddCommandListener(Command_Block, "kill");
@@ -629,4 +630,25 @@ stock int GetClientsCount2(int iTeam = -1)
 	}
 	
 	return iCount;
+}
+
+public Action CS_OnCSWeaponDrop(int client, int weaponIndex)
+{
+	if(cvarScoutDropRemove.BoolValue)
+	{
+		RequestFrame(OnWeaponDropped, EntIndexToEntRef(weaponIndex));
+	}
+}
+
+public void OnWeaponDropped(int weapon)
+{
+	char szBuffer[16];
+	if(	(weapon = EntRefToEntIndex(weapon)) == INVALID_ENT_REFERENCE ||
+		!IsValidEntity(weapon) || 
+		GetEntPropEnt(weapon, Prop_Data, "m_hOwnerEntity") != -1 || 
+		!GetEntityClassname(weapon, szBuffer, 16) ||
+		strcmp(szBuffer[7], "scout", false))	
+			return;
+
+	RemoveEntity(weapon);
 }
