@@ -14,6 +14,7 @@ ConVar cvarBanType, cvarScoutEnable, cvarRespawnMode, cvarRespawnCD, cvarDisconn
 int RespawnMode;
 bool Sourcebans, RoundIsEnd;
 
+
 //ArrayList RespawnList;
 
 public Plugin myinfo = 
